@@ -1,7 +1,7 @@
 {
   "name": "simple-email-auth",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Simple Email Authentication",
   "main": "index.js",
   "scripts": {
     "test": "jest",
