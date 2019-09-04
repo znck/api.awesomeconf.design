@@ -1,7 +1,7 @@
 {
   "version": 1,
   "type": "docker",
-  "alias": "auth.awesomeconf.design",
+  "alias": "api.awesomeconf.design",
   "env": {
     "TARGET_AUTH_DOMAIN": "https://awesomeconf.design",
     "TARGET_REDIRECT_URL": "https://awesomeconf.design/auth/complete",
