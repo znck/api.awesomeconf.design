@@ -1,0 +1,9 @@
+.github/
+dist/
+node_modules/
+.env/
+.gitignore/
+docker-compose.yaml
+Docker
+jest.config.js
+README.md
