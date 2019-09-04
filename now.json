@@ -5,9 +5,9 @@
   "env": {
     "TARGET_AUTH_DOMAIN": "https://awesomeconf.design",
     "TARGET_REDIRECT_URL": "https://awesomeconf.design/auth/complete",
-    "AUTH_CONFIRM_URL": "https://auth.awesomeconf.design/confirm",
+    "AUTH_CONFIRM_URL": "https://api.awesomeconf.design/confirm",
     "AUTH_MAIL_ADDRESS": "AwesomeConf.Design <security@awesomeconf.design>",
-    "JWT_ISSUER": "https://auth.awesomeconf.design",
+    "JWT_ISSUER": "https://api.awesomeconf.design",
     "JWT_CLAIMS_NAMESPACE": "https://awesomeconf.design/jwt/claims",
     "MAILGUN_DOMAIN": "mg.awesomeconf.design",
     "MAILGUN_API_KEY": "@awesomeconf-mailgun-api-key",
