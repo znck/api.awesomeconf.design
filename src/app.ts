@@ -66,6 +66,10 @@ router.post('/refresh', async context => {
   context.body = await refreshToken(token, () => true)
 })
 
+router.get('*', async context => {
+  context.redirect('https://awesomeconf.design')
+})
+
 app.proxy = true
 app
   .use(
