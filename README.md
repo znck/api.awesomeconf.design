@@ -1,5 +1,3 @@
-# Simple Email Authentication
+# Backend API for AwesomeConf.Design
 
-A simple app to add passwordless authentication to your application.
-
-> Deployed at [auth.awesomeconf.design](https://auth.awesomeconf.design) via [now.sh](https://now.sh).
+> Deployed at [api.awesomeconf.design](https://auth.awesomeconf.design) via [now.sh](https://now.sh).
