@@ -1,7 +1,6 @@
 import Koa from 'koa'
 import KoaRouter from 'koa-router'
 import cors from '@koa/cors'
-import rateLimit from 'koa-ratelimit'
 import { encode } from 'querystring'
 import {
   sendAuthRequest,
@@ -79,7 +78,6 @@ app
       origin: DEFAULT_DOMAIN,
     })
   )
-  .use(rateLimit())
   .use(router.allowedMethods())
   .use(router.routes())
 
