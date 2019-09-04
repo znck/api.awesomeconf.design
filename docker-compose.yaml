@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  auth:
+    image: "gcr.io/awesomeconf/auth:0.0.1"
+    build:
+      context: .
+    env_file:
+      - .env
+    environment:
+      TARGET_AUTH_DOMAIN: https://awesomeconf.design
+      TARGET_REDIRECT_URL: https://awesomeconf.design/auth/complete
+      AUTH_CONFIRM_URL: https://auth.awesomeconf.design/confirm
+      AUTH_MAIL_ADDRESS: AwesomeConf.Design <security@awesomeconf.design>
+      JWT_ISSUER: https://auth.awesomeconf.design
+      JWT_CLAIMS_NAMESPACE: https://awesomeconf.design/jwt/claims
+      MAILGUN_DOMAIN: mg.awesomeconf.design
+      # Loaded from .env file
+      # MAILGUN_API_KEY: api-xxxx
+      # SIGNING_SECRET: secret
+      # JWT_SECRET: secret
+    ports: 
+      - 8001:80
