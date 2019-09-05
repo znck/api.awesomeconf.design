@@ -1,5 +1,6 @@
 import ts from 'rollup-plugin-typescript2'
 import resolve from 'rollup-plugin-node-resolve'
+import loader from 'graphql-tag/loader'
 import fs from 'fs'
 import path from 'path'
 import { dependencies } from './package.json'
@@ -27,6 +28,22 @@ function image() {
     },
   }
 }
+/** @returns {import('rollup').Plugin} */
+function graphql() {
+  return {
+    transform(code, id) {
+      if (!id.endsWith('.graphql')) return
+      const output = loader.call({ cacheable() {} }, code)
+
+      return {
+        code: output.replace(/module\.exports\s*=/, 'export default'),
+        map: {
+          mappings: '',
+        },
+      }
+    },
+  }
+}
 
 export default {
   input: 'src/app.ts',
@@ -35,6 +52,6 @@ export default {
     format: 'cjs',
     sourcemap: true,
   },
-  plugins: [ts(), resolve(), image()],
+  plugins: [ts(), resolve(), image(), graphql({})],
   external: ['querystring', 'crypto', ...Object.keys(dependencies)],
 }

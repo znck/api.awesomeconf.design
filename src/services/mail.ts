@@ -4,12 +4,12 @@ import { AuthRequest } from './auth'
 import logo from '../assets/logo.png'
 
 const CONFIRMATION_URL =
-  process.env.AUTH_CONFIRM_URL || 'https://auth.znck.dev/confirm'
+  process.env.AUTH_CONFIRM_URL || 'https://auth.awesomeconf.design/confirm'
 const transport = new Mailgun({
   apiKey: process.env.MAILGUN_API_KEY,
   domain: process.env.MAILGUN_DOMAIN,
 })
-const AUTH_MAILER = process.env.AUTH_MAIL_ADDRESS || 'security@znck.dev'
+const AUTH_MAILER = process.env.AUTH_MAIL_ADDRESS || 'security@awesomeconf.design'
 
 export function sendAuthToken(
   token: string,

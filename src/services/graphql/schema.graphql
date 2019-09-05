@@ -1,0 +1,158 @@
+schema {
+  query: query_root
+  mutation: mutation_root
+}
+
+type airtable_attachment {
+  id: ID!
+  size: Int
+  url: String
+  type: String
+  filename: String
+  thumbnails: airtable_attachment_thumbnail_group
+}
+
+type airtable_attachment_thumbnail {
+  url: String
+  height: Int
+  width: Int
+}
+
+type airtable_attachment_thumbnail_group {
+  small: airtable_attachment_thumbnail
+  large: airtable_attachment_thumbnail
+}
+
+type airtable_collaborator {
+  id: ID!
+  email: String!
+  name: String
+}
+
+input airtable_input_attachment {
+  size: Int
+  url: String
+  type: String
+  filename: String
+  thumbnails: airtable_input_attachment_thumbnail_group
+}
+
+input airtable_input_attachment_thumbnail {
+  url: String
+  height: Int
+  width: Int
+}
+
+input airtable_input_attachment_thumbnail_group {
+  small: airtable_input_attachment_thumbnail
+  large: airtable_input_attachment_thumbnail
+}
+
+input airtable_input_collaborator {
+  email: String!
+  name: String
+}
+
+type mutation_root {
+  insert_proposal(fields: proposal_fields): proposals
+  update_proposal(id: ID!, fields: proposal_fields): proposals
+  delete_proposal(id: ID!): Boolean
+  insert_request(fields: request_fields): requests
+  update_request(id: ID!, fields: request_fields): requests
+  delete_request(id: ID!): Boolean
+}
+
+enum order_by {
+  asc
+  desc
+}
+
+input proposal_fields {
+  email: String
+  notes: String
+  attachments: [airtable_input_attachment]
+  accepted: Boolean
+  collaborator: airtable_input_collaborator
+  date: String
+  phone: String
+  website: String
+  complexity: Float
+  amount: String
+  percentage: Int
+  duration: String
+  rating: Int
+  id: Int
+}
+
+input proposal_order_by {
+  id: order_by
+  email: order_by
+  notes: order_by
+  attachments: order_by
+  accepted: order_by
+  collaborator: order_by
+  date: order_by
+  phone: order_by
+  website: order_by
+  complexity: order_by
+  amount: order_by
+  percentage: order_by
+  duration: order_by
+  rating: order_by
+}
+
+type proposals {
+  """Unique ID of the record"""
+  _id: ID
+
+  """UTC time at the record creation."""
+  _createdAt: String
+  email: String
+  notes: String
+  attachments: [airtable_attachment]
+  accepted: Boolean
+  collaborator: airtable_collaborator
+  date: String
+  phone: String
+  website: String
+  complexity: Float
+  amount: String
+  percentage: Int
+  duration: String
+  rating: Int
+  id: Int
+}
+
+type query_root {
+  proposals(limit: Int, offset: Int, filter_by_formula: String, order_by: proposal_order_by): [proposals]
+  proposal_by_pk(id: ID!): proposals
+  requests(limit: Int, offset: Int, filter_by_formula: String, order_by: request_order_by): [requests]
+  request_by_pk(id: ID!): requests
+}
+
+input request_fields {
+  email: String
+  notes: String
+  attachments: [airtable_input_attachment]
+  cfp: String
+}
+
+input request_order_by {
+  id: order_by
+  email: order_by
+  notes: order_by
+  attachments: order_by
+  cfp: order_by
+}
+
+type requests {
+  """Unique ID of the record"""
+  _id: ID
+
+  """UTC time at the record creation."""
+  _createdAt: String
+  email: String
+  notes: String
+  attachments: [airtable_attachment]
+  cfp: String
+}

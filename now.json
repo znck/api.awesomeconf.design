@@ -12,6 +12,8 @@
     "MAILGUN_DOMAIN": "mg.awesomeconf.design",
     "MAILGUN_API_KEY": "@awesomeconf-mailgun-api-key",
     "SIGNING_SECRET": "@awesomeconf-signing-secret",
-    "JWT_SECRET": "@awesomeconf-jwt-secret"
+    "JWT_SECRET": "@awesomeconf-jwt-secret",
+    "AIRTABLE_API_KEY": "@awesomeconf-airtable-api-key",
+    "AIRTABLE_BASE_ID": "@awesomeconf-airtable-base-id"
   }
 }

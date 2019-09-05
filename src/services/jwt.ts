@@ -8,7 +8,7 @@ const THIRTY_DAYS = 30 * DAY
 const JWT = P(jwt)
 const JWT_SECRET = process.env.JWT_SECRET
 
-const CLAIMS_NAMESPACE = process.env.JWT_CLAIMS_NAMESPACE || 'https://auth.znck.dev/jwt/claims'
+const CLAIMS_NAMESPACE = process.env.JWT_CLAIMS_NAMESPACE || 'https://awesomeconf.design/jwt/claims'
 
 export interface TokenPair {
   accessToken: string
@@ -16,7 +16,7 @@ export interface TokenPair {
 }
 
 const algorithm = 'HS256'
-const issuer = process.env.JWT_ISSUER || 'https://auth.znck.dev'
+const issuer = process.env.JWT_ISSUER || 'https://api.awesomeconf.design'
 
 export async function verify(
   token: string,

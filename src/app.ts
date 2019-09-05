@@ -8,14 +8,15 @@ import {
   checkRequestStatusAndIssueTokens,
 } from './services/auth'
 import { refreshToken } from './services/jwt'
+import graphql from './services/graphql'
 
 const app = new Koa()
 const router = new KoaRouter()
 
-const DEFAULT_DOMAIN = process.env.TARGET_AUTH_DOMAIN || 'https://znck.dev'
+const DEFAULT_DOMAIN = process.env.TARGET_AUTH_DOMAIN || 'https://awesomeconf.design'
 const DEFAULT_CLIENT = 'web'
 const DEFAULT_REDIRECT_URL =
-  process.env.TARGET_REDIRECT_URL || 'https://znck.dev/auth/complete'
+  process.env.TARGET_REDIRECT_URL || 'https://awesomeconf.design/auth/complete'
 
 router.post('/authenticate', async context => {
   const { email, client = DEFAULT_CLIENT } = context.query
@@ -69,15 +70,18 @@ router.get('*', async context => {
   context.redirect('https://awesomeconf.design')
 })
 
+const CORS = {
+  allowMethods: ['POST'],
+  allowHeaders: ['X-Refresh-Token'],
+  origin: DEFAULT_DOMAIN,
+}
+
 app.proxy = true
+
+graphql.applyMiddleware({ app, cors: CORS })
+
 app
-  .use(
-    cors({
-      allowMethods: ['POST'],
-      allowHeaders: ['X-Refresh-Token'],
-      origin: DEFAULT_DOMAIN,
-    })
-  )
+  .use(cors(CORS))
   .use(router.allowedMethods())
   .use(router.routes())
 

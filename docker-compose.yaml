@@ -17,6 +17,8 @@ services:
       MAILGUN_DOMAIN: mg.awesomeconf.design
       # Loaded from .env file
       # MAILGUN_API_KEY: api-xxxx
+      # AIRTABLE_API_KEY: api-xxxx
+      # AIRTABLE_BASE_ID: xxxx
       # SIGNING_SECRET: secret
       # JWT_SECRET: secret
     ports: 

@@ -1,11 +1,14 @@
 {
+  "include": ["src"],
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
     "baseUrl": ".",
     "esModuleInterop": true,
     "sourceMap": true,
+    "allowJs": true,
     "moduleResolution": "node",
+    "skipLibCheck": true,
     "paths": {
       "@app": [
         "src/app.ts"

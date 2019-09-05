@@ -9,7 +9,7 @@ describe('jwt', () => {
 
     expect(await verify(accessToken, SECRET)).toMatchObject({
       jti: '1',
-      'https://znck.dev/jwt/claims': {
+      'https://awesomeconf.design/jwt/claims': {
         test: 'yep'
       }
     });
@@ -30,7 +30,7 @@ describe('jwt', () => {
 
     expect(await verify(newToken, SECRET)).toMatchObject({
       jti: '1',
-      'https://znck.dev/jwt/claims': {
+      'https://awesomeconf.design/jwt/claims': {
         test: 'yep'
       }
     });
